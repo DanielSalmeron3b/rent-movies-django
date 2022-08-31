@@ -265,4 +265,11 @@ class MovieView(View):
 
 
     def delete(self, request, id):
-        pass
+        movies = list(Movies.objects.filter(id=id).values())
+        if len(movies) > 0:
+            Movies.objects.filter(id=id).delete()
+            data = {'message': "Success",}
+        else:
+            data = {'message': "Movie not found",}
+        return JsonResponse(data)
+
