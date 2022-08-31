@@ -6,14 +6,14 @@
   <a href="/customer_portal/manage/">Manage</a>
 </div>
 
-<div style="height:300px;">
+<div>
   <div>
 
 <form action="/customer_portal/search_results/" method="post">
   {% csrf_token %}
   <br>
-  <lable>Enter City Name:</lable> <input type="text" name="city"><br>
-  <input type="submit" value="Search Movie">
+  <lable>Enter City Name:</lable><input class="form-control" type="text" name="city"><br>
+  <input class="btn btn-primary" type="submit" value="Search Movie">
 </form>
 
 </div>

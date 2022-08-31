@@ -190,7 +190,7 @@ def manage(request):
                 order_dictionary = {
                     "id": order.id,
                     "rent": order.rent,
-                    "vehicle": order.vehicle,
+                    "movie": order.movie,
                     "days": order.days,
                     "movie_admin": order.movie_admin,
                 }

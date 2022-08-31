@@ -4,21 +4,20 @@
     <a href="/movie_admin_portal/login/">Login</a>
     <a href="/">Home</a>
 </div>
-<div style="height:1000px;">
 <div>
-|
+<div>
     <h2>Registration Form</h2>
 
 <form action="/movie_admin_portal/registration/" method="POST">
     {% csrf_token %}
-    <lable>Name</lable><input type="text" name="name"><br>
-    <lable>Username</lable><input type="text" name="username"><br>
-    <lable>Password</lable><input type="password" name="password"><br>
-    <lable>Email</lable><input type="text" name="email"><br>
-    <lable>Phone Number</lable><input type="text" name="phone_number"><br>
-    <lable>City</lable><input type="text" name="city"><br>
+    <lable>Name</lable><input class="form-control" type="text" name="name"><br>
+    <lable>Username</lable><input class="form-control" type="text" name="username"><br>
+    <lable>Password</lable><input class="form-control" type="password" name="password"><br>
+    <lable>Email</lable><input class="form-control" type="text" name="email"><br>
+    <lable>Phone Number</lable><input class="form-control" type="text" name="phone_number"><br>
+    <lable>City</lable><input class="form-control" type="text" name="city"><br>
     {% comment %} <lable>Pincode</lable><input type="text" name="pincode">{% endcomment %}
-    <input type="submit"><br>
+    <input type="submit" class="btn btn-primary">
 </form>
 </div>
 </div>

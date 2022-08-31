@@ -5,11 +5,11 @@
     <div>Customer Portal: {{user.username}}</div>
     <a href="/customer_portal/logout/">Logout</a>
     <a href="/customer_portal/manage/">Manage</a>
-    <a href="/customer_portal/search/">Search Cars</a>
+    <a href="/customer_portal/search/">Search Movies</a>
 </div>
 
 <div style="padding:100px  ">
-<b>Car: {{movie.movie_name}}</b>
+<b>Movie: {{movie.movie_name}}</b>
 <form action="/customer_portal/confirmed/" method="post">
 {% csrf_token %}
     <b>Price : ${{cost_per_day}} per day</b><br>

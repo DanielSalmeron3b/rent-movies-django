@@ -1,4 +1,3 @@
-import email
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -29,8 +28,7 @@ def auth_view(request):
         password = request.POST.get('password')
         user = authenticate(
             username=username,
-            password=password,
-            email=email
+            password=password
         )
     
     try:
@@ -137,7 +135,7 @@ def add_movie(request):
     else:
         area = Area(city=city)
         area.save()
-        area = Area.objects.get(area = area)
+        area = Area.objects.get(city = city)
         movie = Movies(
             movie_name=movie_name,
             genre=genre,
@@ -146,8 +144,8 @@ def add_movie(request):
             description=description,
             duration=duration,
             )
-        movie.save()
-        return render(request, 'movie_admin/movie_added.html')
+    movie.save()
+    return render(request, 'movie_admin/movie_added.html')
 
 
 @login_required
@@ -156,7 +154,7 @@ def manage_movies(request):
     user = User.objects.get(username=username)
     movie_admin = MovieAdmin.objects.get(movie_admin = user)
     movie_list = []
-    movies = Movies.objects.filter(admin = movie_admin)
+    movies = Movies.objects.filter(added_by=movie_admin)
 
     for movie in movies:
         movie_list.append(movie)

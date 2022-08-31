@@ -9,9 +9,9 @@
   <div>
 <form action="/customer_portal/auth/" method="POST">
     {% csrf_token %}
-  <lable>Username: </lable><input type="text" name="username"><br>
-  <lable>Password: </lable><input type="password" name="password"><br>
-  <input type="submit" value="Login">
+  <lable>Username: </lable><input class="form-control" type="text" name="username"><br>
+  <lable>Password: </lable><input class="form-control" type="password" name="password"><br>
+  <input class="btn btn-primary" type="submit" value="Login">
 </form><br>
 <div>
 <a href="/customer_portal/register/">Register as Customer</a>

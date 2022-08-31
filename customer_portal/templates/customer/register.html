@@ -12,13 +12,13 @@
 
 <form action="/customer_portal/registration/" method="POST">
     {% csrf_token %}
-    <lable>Name: </lable><input type="text" name="name"><br>
-    <lable>Username: </lable><input type="text" name="username"><br>
-    <lable>Password: </lable><input type="password" name="password"><br>
-    <lable>Email: </lable><input type="text" name="email"><br>
-    <lable>Phone number: </lable><input type="text" name="phone_number"><br>
-    <lable>City: </lable><input type="text" name="city"><br>
-    <input type="submit"><br>
+    <lable>Name: </lable><input class="form-control" type="text" name="name"><br>
+    <lable>Username: </lable><input class="form-control" type="text" name="username"><br>
+    <lable>Password: </lable><input class="form-control" type="password" name="password"><br>
+    <lable>Email: </lable><input class="form-control" type="text" name="email"><br>
+    <lable>Phone number: </lable><input class="form-control" type="text" name="phone_number"><br>
+    <lable>City: </lable><input class="form-control" type="text" name="city"><br>
+    <input class="btn btn-primary" type="submit"><br>
 </form>
 
 </div>

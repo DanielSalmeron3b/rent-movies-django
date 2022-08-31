@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="icon" href="{% static 'images/movie-icon.ico' %}">
     <title>Rent movies</title>
 </head>
 <body>
@@ -12,12 +14,12 @@
 
     <form action="/customer_portal/login/" mehtod="POST">
         {% csrf_token %}
-        <input type="submit" value="Customer Login">
+        <input type="submit" class="btn btn-secondary" value="Customer Login">
     </form>
     <br>
     <form action="/movie_admin_portal/login/" method="POST">
         {% csrf_token %}
-        <input type="submit" value="Movie Admin Login">
+        <input type="submit" class="btn btn-secondary" value="Movie Admin Login">
     <form>
 </body>
 </html>
