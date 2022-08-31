@@ -68,6 +68,7 @@ def registration(request):
         user = User.objects.create_user(
             username = username,
             password = password,
+            email=email,
         )
         user.name = name
         user.save()
