@@ -7,7 +7,7 @@
     <a href="/movie_admin_portal/auth/">Home</a>
     <a href="/movie_admin_portal/order_list/">Orders</a>
     <a href="/movie_admin_portal/manage_movies/">Movies</a>
-    <div href="/movie_admin_portal/history/">Earnings : ${{wallet}}</div>
+    <div href="/movie_admin_portal/history/">Earnings: ${{wallet}}</div>
 </div>
 
 <h3 style="padding-top:30">History</h3>
@@ -15,24 +15,23 @@
 <div style="padding:18">
 <table class="table">
     <tr>
-        <th>Name </th>
-        <th>Rent </th>
-        <th>Days </th>
+        <th>Name</th>
+        <th>Rent</th>
+        <th>Days</th>
         <th>Duration</th>
     </tr>
     {% for order in order_list %}
     <tr>
-    <td>{{order.movie.movie_name}}</td>
-    <td>${{order.rent}}</td>
-    <td>{{order.days}}</td>
-    <td>{{order.movie.duration}}</td>
-    <td>
-        <form action = "/movie_admin_portal/complete/" method="post">
+        <td>{% ifchanged %}{{order.movie.movie_name}}{% endifchanged %}</td>
+        <td>{% ifchanged %}${{order.rent}}{% endifchanged %}</td>
+        <td>{% ifchanged %}{{order.days}}{% endifchanged %}</td>
+        <td>{% ifchanged %}{{order.movie.duration}}{% endifchanged %}</td>
+        <td><form action = "/movie_admin_portal/complete/" method="post">
             {% csrf_token %}
         </form>
     </td>
     </tr>
-    {% endfor %}
+{% endfor %}
 </table>
 </div>
 

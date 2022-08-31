@@ -25,10 +25,10 @@
 
     {% for order in order_list %}
     <tr>
-        <td>{{order.movie.movie_name}}</td>
-        <td>{{order.movie.genre}}</td>
-        <td>${{order.rent}}</td>
-        <td>{{order.days}}</td>
+        <td>{% ifchanged %}{{order.movie.movie_name}}{% endifchanged %}</td>
+        <td>{% ifchanged %}{{order.movie.genre}}{% endifchanged %}</td>
+        <td>{% ifchanged %}${{order.rent}}{% endifchanged %}</td>
+        <td>{% ifchanged %}{{order.days}}{% endifchanged %}</td>
         <td><form action = "/movie_admin_portal/complete/" method="post">
         {% csrf_token %}
         <input type="hidden" name="id" value="{{order.id}}">

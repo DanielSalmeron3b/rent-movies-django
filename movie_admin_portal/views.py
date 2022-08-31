@@ -171,12 +171,11 @@ def order_list(request):
     username = request.user
     user = User.objects.get(username=username)
     movie_admin = MovieAdmin.objects.get(movie_admin = user)
-    orders = Orders.objects.filter(movie_admin = movie_admin)
     order_list = []
-
-    for order in orders:
-        if order.is_complete == False:
-            order_list.append(order)
+    orders = Orders.objects.filter(movie_admin = movie_admin)
+    for o in orders:
+        if o.is_complete == False:
+            order_list.append(o)
     return render(request, 'movie_admin/order_list.html', {'order_list': order_list})
 
 
@@ -196,10 +195,10 @@ def complete(request):
 def history(request):
     user = User.objects.get(username = request.user)
     movie_admin = MovieAdmin.objects.get(movie_admin = user)
-    orders = Orders.objects.filter(movie_admin = movie_admin)
     order_list = []
-    for order in orders:
-        order_list.append(order)
+    orders = Orders.objects.filter(movie_admin = movie_admin)
+    for o in orders:
+        order_list.append(o)
     return render(request, 'movie_admin/history.html', {'wallet':movie_admin.wallet, 'order_list':order_list})
 
 

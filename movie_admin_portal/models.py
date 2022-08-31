@@ -8,6 +8,9 @@ class Area(models.Model):
     # pincode = models.CharField(validators = [MinLengthValidator(6), MaxLengthValidator(6)],max_length = 6,unique=True)
     city = models.CharField(max_length = 20)
 
+    def __str__(self):
+        return self.city
+
 
 class MovieAdmin(models.Model):
     movie_admin = models.OneToOneField(
