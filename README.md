@@ -11,4 +11,4 @@
 For the REST API you can use the Thunder Client VS Extension or other programm like Postman or Insomnia.
 
 ## Database
-I left some commented code if you want to use **MySQL.**
+I left some commented in settings.py code if you want to use **MySQL.**
