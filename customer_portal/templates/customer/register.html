@@ -1,0 +1,26 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+<div>
+  <a href="/customer_portal/login/">Login</a>
+  <a href="/">Home</a>
+</div>
+
+<div  style="height:1000px;">
+<div>
+
+<h2>Registration Form</h2>
+
+<form action="/customer_portal/registration/" method="POST">
+    {% csrf_token %}
+    <lable>Name: </lable><input type="text" name="name"><br>
+    <lable>Username: </lable><input type="text" name="username"><br>
+    <lable>Password: </lable><input type="password" name="password"><br>
+    <lable>Email: </lable><input type="text" name="email"><br>
+    <lable>Phone number: </lable><input type="text" name="phone_number"><br>
+    <lable>City: </lable><input type="text" name="city"><br>
+    <input type="submit"><br>
+</form>
+
+</div>
+</div>
+{% endblock %}

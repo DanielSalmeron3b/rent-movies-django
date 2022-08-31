@@ -1,0 +1,38 @@
+{% extends 'movie_admin/base.html' %}
+{% block content %}
+{% load static %}
+
+<div>
+    <div>Movie Admin Portal: {{user.username}}</div>
+    <a href="/movie_admin_portal/logout/">Logout</a>
+    <a href="/movie_admin_portal/order_list/">Orders</a>
+    <a href="/movie_admin_portal/manage_movies/">Movies</a>
+    <a href="/movie_admin_portal/history/">Earnings</a>
+</div>
+
+<div style="height:800px;">
+    <div style="padding-left: 200px;">
+
+<h3 style="padding:8px">
+    <center>Post Vehicles<center>
+</h3>
+
+<form action="/movie_admin_portal/add_movie/" method="post">
+    {% csrf_token %}
+
+    <lable>Movie Name: </lable> <input type="text" name="movie_name"><br>
+    <lable>Genre: </lable> <input type="text" name="genre"><br>
+    <lable>City: </lable> <input type="text" name="city"><br>
+    {% comment %} <lable>Pincode: </lable> <input type="text" name="pincode"><br> {% endcomment %}
+    <lable>Description: </lable> <input type="text" name="description"><br>
+    <lable>Duration: </lable> <input type="text" name="duration"><br>
+
+    <input type="submit" value="Add Movie"><br>
+<form>
+</div>
+
+<div>
+    {% comment %} <img src="{% static "images/car.jpg" %}" width="750px"> {% endcomment %}
+</div>
+
+{% endblock %}

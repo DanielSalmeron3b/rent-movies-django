@@ -1,0 +1,17 @@
+
+{% extends 'customer/base.html' %}
+{% block content %}
+{% load static %}
+<div>
+  <div>Customer Portal: {{user.username}}</div>
+  <a href="/customer_portal/logout/">Logout</a>
+  <a href="/customer_portal/manage/">Manage</a>
+</div>
+
+<div style="height:500px;padding:20px;">
+    {% comment %} <img src="{% static "images/car-pics.jpg" %}"> {% endcomment %}
+<div>
+    <a href="/customer_portal/search/">Search for Rental Movies</a>
+</div>
+</div>
+{% endblock %}

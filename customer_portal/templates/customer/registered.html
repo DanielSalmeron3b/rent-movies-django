@@ -1,0 +1,13 @@
+{% extends 'movie_admin/base.html' %}
+{% block content %}
+{% csrf_token %}
+<div>
+  <div>Registration Form</div>
+  <a href="/customer_portal/login/">Login</a>
+  <a href="/">Home</a>
+</div>
+<div>
+<p>Registered Successfully!</p>
+<p>Now go to the <a href="/customer_portal/login/">Login Page<a> and Login!</p>
+</div>
+{% endblock %}

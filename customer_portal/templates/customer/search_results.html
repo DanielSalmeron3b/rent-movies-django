@@ -1,0 +1,43 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+
+<div>
+  <div>Customer Portal: {{user.username}}</div>
+  <a href="/customer_portal/logout/">Logout</a>
+  <a href="/customer_portal/manage/">Manage</a>
+  <a href="/customer_portal/search/">Search Movies</a>
+</div>
+
+<h3 style="padding-top:30"><b>Search Results</b></h3>
+
+<div style="padding:50px;">
+<table>
+  
+
+    <tr>
+      <th style="padding:20">Movie </th>
+      <th style="padding:20">Genre  </th>
+      <th style="padding:20">Duration </th>
+      <th style="padding:20">Description </th>
+      <th style="padding:20">
+      </th style="padding:20">
+    </tr>
+    {% for movie in request.session.movies_list %}
+    <tr>
+      <td>{{movie.name}}</td>
+      <td>{{movie.genre}}</td>
+      <td>{{movie.duration}}</td>
+      <td>{{movie.description}}</td>
+      <td><form action = "/customer_portal/rent/" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{movie.id}}">
+        <input type="submit" value="Rent">
+        </form></td>
+    </tr>
+
+  {% endfor %}
+</table>
+</div>
+{% endblock %}
+
+

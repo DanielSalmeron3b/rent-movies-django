@@ -1,0 +1,41 @@
+{% extends 'movie_admin/base.html' %}
+{% block content %}
+<div>
+    <div>Movie Admin Portal: {{user.username}}</div>
+    <a href="/movie_admin_portal/logout/">Logout</a>
+    <a href="/movie_admin_portal/auth/">Home</a>
+    <a href="/movie_admin_portal/order_list/">Orders</a>
+    <a href="/movie_admin_portal/manage_movies/">Movies</a>
+    <a href="/movie_admin_portal/history/">Earnings</a>
+</div>
+
+<h3 style="padding-top:30"><b>Movie's Order List</b></h3>
+
+<div style="padding:18">
+
+<table>
+    <tr>
+    <th style="padding:20">Name</th>
+    <th style="padding:20">Genre</th>
+    <th style="padding:20">Rental Amount</th>
+    <th style="padding:20">Days</th>
+    <th style="padding:20">Action
+    </th>
+    </tr>
+
+    {% for order in order_list %}
+    <tr>
+    <td>{{order.movie.movie_name}}</td>
+    <td>{{order.movie.genre}}</td>
+    <td>${{order.rent}}</td>
+    <td>{{order.days}}</td>
+    <td><form action = "/movie_admin_portal/complete/" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{order.id}}">
+        <input type="submit" value="Complete">
+    </form></td>
+    </tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

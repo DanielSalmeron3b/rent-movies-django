@@ -1,0 +1,22 @@
+{% extends 'customer/base.html' %}
+
+{% block content %}
+
+{% if form.errors %}
+
+{% endif %}
+<div style="height:500px;">
+  <div>
+<form action="/customer_portal/auth/" method="POST">
+    {% csrf_token %}
+  <lable>Username: </lable><input type="text" name="username"><br>
+  <lable>Password: </lable><input type="password" name="password"><br>
+  <input type="submit" value="Login">
+</form><br>
+<div>
+<a href="/customer_portal/register/">Register as Customer</a>
+<a href="/">Home</a>
+</div>
+</div>
+</div>
+{% endblock %}

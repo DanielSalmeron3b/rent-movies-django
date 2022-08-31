@@ -1,0 +1,22 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+
+<div>
+    <div>Customer Portal: {{user.username}}</div>
+    <a href="/customer_portal/logout/">Logout</a>
+    <a href="/customer_portal/manage/">Manage</a>
+    <a href="/customer_portal/search/">Search Cars</a>
+</div>
+
+<div style="padding:100px  ">
+<b>Car: {{movie.movie_name}}</b>
+<form action="/customer_portal/confirmed/" method="post">
+{% csrf_token %}
+    <b>Price : ${{cost_per_day}} per day</b><br>
+    <lable>How many days?</lable><input type="text" placeholder="2" name="days"><br>
+    <input type="submit"  value="Confirm My Order"><br>
+    <input type="hidden" value="{{movie.id}}" name="id">
+    <br>
+</from>
+</div>
+{% endblock %}

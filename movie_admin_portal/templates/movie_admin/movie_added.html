@@ -1,0 +1,19 @@
+{% extends 'movie_admin/base.html' %}
+{% block content %}
+{% csrf_token %}
+<div>
+    <div>Car Dealer Portal: {{user.username}}</div>
+    <a href="/movie_admin_portal/logout/">Logout</a>
+    <a href="/movie_admin_portal/auth/">Home</a>
+    <a href="/movie_admin_portal/order_list/">Orders</a>
+    <a href="/movie_admin_portal/manage_movies/">Movies</a>
+    <a href="/movie_admin_portal/history/">Earnings</a>
+</div>
+
+<div style="height:300px;">
+    <div >
+    Movie Details Added!<br>
+    <a href="/movie_admin_portal/index/">Back To Home Page</a>
+</div>
+</div>
+{% endblock %}

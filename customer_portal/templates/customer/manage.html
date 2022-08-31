@@ -1,0 +1,38 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+<div>
+  <div>Customer Portal: {{user.username}}</div>
+  <a href="/customer_portal/logout/">Logout</a>
+  <a href="/customer_portal/search/">Search Movies</a>
+</div>
+<h3 style="padding-top:20"><b>Your Orders</b></h3>
+<div style="padding:50px;">
+<table>
+
+  <tr>
+    <th>Movie</th>
+    <th>Days</th>
+    <th>Rent</th>
+    <th>Duration</th>
+    <th>Description</th>
+    <th>Action</th>
+  </tr>
+    {% for order in od %}
+    <tr>
+    <td>{{order.movie.movie_name}}</td>
+    <td>{{order.days}}</td>
+    <td>${{order.rent}}</td>
+    <td>{{order.movie.duration}}</td>
+    <td>{{order.movie.description}}</td>
+    <td>
+        <form action = "/customer_portal/delete/" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{order.id}}">
+        <input type="submit" value="Delete">
+    </form>
+    </td>
+</tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

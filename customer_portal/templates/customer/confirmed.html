@@ -1,0 +1,22 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+<div>
+  <div>Customer Portal: {{user.username}}</div>
+  <a href="/customer_portal/logout/">Logout</a>
+  <a href="/customer_portal/manage/">Manage</a>
+  <a href="/customer_portal/search/">Search Movies</a>
+</div>
+{% csrf_token %}
+
+<div style="height:400px;">
+<div>
+<h3><b>Order Completed</b></h3>
+<b>Your Movie Order Has Been Processed!</b><br>
+<b>Total Rent:</b> ${{order.rent}}<br>
+<b>Movie:</b> {{order.movie.movie_name}}<br>
+<b>Days:</b> {{order.days}} days<br>
+<b>Movie Admin:</b> {{order.movie_admin.movie_admin.name}}<br>
+<b>Movie Admin's Contact:</b> {{order.movie_admin.phone_number}}<br>
+</div>
+</div>
+{% endblock %}

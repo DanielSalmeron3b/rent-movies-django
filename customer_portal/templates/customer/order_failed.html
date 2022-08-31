@@ -1,0 +1,11 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+
+<div>
+  <div>Customer Portal: {{user.username}}</div>
+  <a href="/customer_portal/logout/">Logout</a>
+  <a href="/customer_portal/manage/">Manage</a>
+  <a href="/customer_portal/search/">Search movies</a>
+</div>
+<div style="padding:60px;">
+{% endblock %}

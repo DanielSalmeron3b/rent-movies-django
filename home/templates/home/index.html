@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent movies</title>
+</head>
+<body>
+    <h1>Rent Movies | Using Django</h1>
+
+    <form action="/customer_portal/login/" mehtod="POST">
+        {% csrf_token %}
+        <input type="submit" value="Customer Login">
+    </form>
+    <br>
+    <form action="/movie_admin_portal/login/" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Car Dealer Login">
+    <form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+<div>
+  <div>Customer Portal: {{user.username}}</div>
+  <a href="/customer_portal/logout/">Logout</a>
+  <a href="/customer_portal/manage/">Manage</a>
+</div>
+
+<div style="height:300px;">
+  <div>
+
+<form action="/customer_portal/search_results/" method="post">
+  {% csrf_token %}
+  <br>
+  <lable>Enter City Name:</lable> <input type="text" name="city"><br>
+  <input type="submit" value="Search Movie">
+</form>
+
+</div>
+</div>
+
+{% endblock %}

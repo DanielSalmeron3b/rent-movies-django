@@ -1,0 +1,42 @@
+{% extends 'movie_admin/base.html' %}
+{% block content %}
+<div>
+    <div>Movie Admin Portal: {{user.username}}</div>
+    <a href="/movie_admin_portal/logout/">Logout</a>
+    <a href="/movie_admin_portal/auth/">Home</a>
+    <a href="/movie_admin_portal/order_list/">Orders</a>
+    <a href="/movie_admin_portal/manage_movies/">Movies</a>
+    <a href="/movie_admin_portal/history/">Earnings</a>
+</div>
+
+<h3 style="padding-top:30"><b>Posted Movies</b></h3>
+
+<div style="padding:18">
+<table>
+    <tr>
+        <th style="padding:20;">Car</th>
+        <th style="padding:20;">Genre</th>
+        <th style="padding:20;">Duration</th>
+        {% comment %} <th style="padding:20;">Pincode</th> {% endcomment %}
+        <th style="padding:20;">City</th>
+        <th style="padding:20;">Action</th>
+    </tr>
+
+    {% for movie in movie_list %}
+    <tr>
+        <td>{{movie.movie_name}}</td>
+        <td>{{movie.genre}}</td>
+        <td>{{movie.duration}}</td>
+        {% comment %} <td>{{vehicle.area.pincode}}</td> {% endcomment %}
+        <td>{{movie.area.city}}</td>
+        <td><form action = "/movie_admin_portal/delete/" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{movie.id}}">
+        <input type="submit" value="Delete">
+        </form>
+    </td>
+    </tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}
