@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from django.http.response import JsonResponse
+from django.utils.decorators import method_decorator
+from django.views import View # For the REST API
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib import auth
@@ -6,6 +10,7 @@ from movie_admin_portal.models import *
 from customer_portal.models import *
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
+import json
 
 # Create your views here.
 
@@ -204,3 +209,60 @@ def delete(request):
     movie = Movies.objects.get(id = movie_id)
     movie.delete()
     return HttpResponseRedirect('/movie_admin_portal/manage_movies/')
+
+
+# ------------------ REST API ------------------
+
+class MovieView(View):
+
+    # Eliminating csfr to make POST requests
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+
+    def get(self, request, id=0):
+        if (id > 0):
+            movies = list(Movies.objects.filter(id=id).values())
+            if len(movies) > 0:
+                movie = movies[0]
+                data = {
+                    'message': "Success",
+                    'movie': movie,
+                }
+            else:
+                data = {'message': "Movie not found",}
+            return JsonResponse(data)
+        else:
+            movies = list(Movies.objects.values())
+            if len(movies) > 0:
+                data = {
+                    'message': "Success",
+                    'movies': movies,
+                }
+            else:
+                data = {'message': "Movies not found",}
+            return JsonResponse(data)
+
+
+    def post(self, request):
+        data = {'message': "Success",}
+        return JsonResponse(data)
+
+
+    def patch(self, request, id):
+        json_data = json.loads(request.body)
+        movies = list(Movies.objects.filter(id=id).values())
+        if len(movies) > 0:
+            movie = Movies.objects.get(id=id)
+            movie.name = json_data['movie_name']
+            movie.duration = json_data['duration']
+            movie.save()
+            data = {'message': "Success",}
+        else:
+            data = {'message': "Movie not found",}
+        return JsonResponse(data)
+
+
+    def delete(self, request, id):
+        pass

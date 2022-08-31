@@ -1,4 +1,4 @@
-from django.urls import re_path
+from django.urls import re_path, path
 from movie_admin_portal.views import *
 # from django.conf.urls import url
 
@@ -15,4 +15,8 @@ urlpatterns = [
     re_path(r'^complete/$',complete),
     re_path(r'^history/$',history),
     re_path(r'^delete/$',delete),
+
+    # REST API
+    path('movies_api/', MovieView.as_view()),
+    path('movies_api/<int:id>', MovieView.as_view()),
 ]
